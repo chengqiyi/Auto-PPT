@@ -1,4 +1,4 @@
-from langchain import PromptTemplate, OpenAI, LLMChain
+gpfrom langchain import PromptTemplate, OpenAI, LLMChain
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.memory import RedisChatMessageHistory, ConversationBufferMemory
 
@@ -38,7 +38,7 @@ class GptChain:
         prompt = PromptTemplate(
             input_variables=["chat_history", "human_input"], template=self.template)
         llm_chain = LLMChain(
-            llm=OpenAI(api_base=self.openai_base_url ,model_name="gpt-3.5-turbo", openai_api_key=self.openai_api_key,streaming =True, callbacks=[StreamingStdOutCallbackHandler()]),
+            llm=OpenAI(openai_base_url=self.openai_base_url ,model_name="gpt-3.5-turbo", openai_api_key=self.openai_api_key,streaming =True, callbacks=[StreamingStdOutCallbackHandler()]),
             prompt=prompt,
             verbose=True,
             memory=memory,
